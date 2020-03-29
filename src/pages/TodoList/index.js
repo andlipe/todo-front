@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { FiTrash2 } from 'react-icons/fi'
+import { FiTrash2, FiEdit2 } from 'react-icons/fi'
 import api from '../../services/api'
 import './styles.css'
 
@@ -18,7 +18,7 @@ export default function TodoList() {
     )
   async function handleCompleted(_id){
     try{     
-   await api.put(`todos/${_id}`, { "completed" : true })
+   await api.patch(`todos/${_id}`, { "completed" : true })
         }
     catch (e) {
         console.log(e)
@@ -43,19 +43,22 @@ export default function TodoList() {
             </button>
          </header>
 
-         <h1>Casos Cadastrados</h1>
+         <h1>Tarefas Cadastradas</h1>
 
          <ul>
             {todos.map(todo => (
                <li key={todo._id}>
+                  <button type="button" className="edit">
+                     <FiEdit2 size={20} color="#a8a8b3"  />
+                     </button>
                   <strong>DESCRIÇÃO:</strong>
                     <p>{todo.description}
                     </p>
                     <span>Concluido: </span>
-                   <input type="checkbox" onChange={() => handleCompleted(todo._id)}/>
-                  <button onClick={() => handleDeleteTodos(todo._id)} type="button">
+                     <button onClick={() => handleDeleteTodos(todo._id)} type="button" className="delete">
                      <FiTrash2 size={20} color="#a8a8b3" />
                   </button>
+                  <input type="checkbox" onChange={() => handleCompleted(todo._id)} />
                </li>
             ))}
          </ul>
