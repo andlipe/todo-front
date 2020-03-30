@@ -21,7 +21,8 @@ O tutorial para instalação pode ser encontrado na documentação oficial.
 ## Como executar?
 Primeiro clonamos esse repositório  
 > git clone https://github.com/andlipe/todo-front.git  
-Precisamos subir o container com o comando
+
+Precisamos subir o container com o comando  
 > docker-compose up --build -d
 
 Pronto o ambiente vai estar disponível na porta 3000 por padrão.
