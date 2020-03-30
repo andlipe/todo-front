@@ -9,8 +9,8 @@ import './styles.css'
 
 export default function EditTodo() {
    const [description, setDescription] = useState('')
-  
-    let _id  = useParams()
+   const [completed, setCompleted] = useState('') 
+   let _id  = useParams()
    const history = useHistory()
 
    async function handleEditDescription(e) {
@@ -18,6 +18,7 @@ export default function EditTodo() {
 
       const data = {
          description,
+         completed
       }
 
       try {
@@ -35,7 +36,7 @@ export default function EditTodo() {
             <section>
 
                <h1>Editar tarefa</h1>
-               <p>Descreva o tarefa detalhadamente para se organizar melhor.</p>
+               <p>Descreva a tarefa detalhadamente para se organizar melhor.</p>
 
                <Link className="back-link" to="/">
                   <FiArrowLeft size={16} />
@@ -49,8 +50,10 @@ export default function EditTodo() {
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                />
-
-               
+               <div className="input-completed">
+                    <input type="radio" value="true" name="gender" onChange={e => setCompleted(e.target.value)} /> Concluído
+                    <input type="radio" value="false" name="gender" onChange={e => setCompleted(e.target.value)}/> Não Concluído
+                </div>
                <button className="button" type="submit">Editar</button>
             </form>
          </div>

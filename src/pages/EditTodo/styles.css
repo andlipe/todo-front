@@ -46,3 +46,11 @@
  .edit-todo-container .content form textarea {
     margin-top: 8px;
  }
+
+ .input-completed {
+    font: 400 18px Roboto;
+ }
+ 
+.input-completed input {
+    margin: -15px;
+}

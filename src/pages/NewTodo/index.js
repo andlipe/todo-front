@@ -35,7 +35,7 @@ export default function Register() {
             <section>
 
                <h1>Cadastrar nova tarefa</h1>
-               <p>Descreva o tarefa detalhadamente para se organizar melhor.</p>
+               <p>Descreva a tarefa detalhadamente para se organizar melhor.</p>
 
                <Link className="back-link" to="/">
                   <FiArrowLeft size={16} />

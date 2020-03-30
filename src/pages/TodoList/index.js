@@ -6,24 +6,16 @@ import './styles.css'
 
 export default function TodoList() {
     const [ todos, setTodos ] = useState([])
-
+     
     useEffect(() => {
         async function loadTodo() {
             const response = await api.get('/todos');
-
+            
             setTodos(response.data)
         }
         loadTodo();
     }, []
     )
-  async function handleCompleted(_id){
-    try{     
-   await api.patch(`todos/${_id}`, { "completed" : true })
-        }
-    catch (e) {
-        console.log(e)
-    }
-  }
     async function handleDeleteTodos(_id) {
         try {
            await api.delete(`todos/${_id}`)
@@ -57,11 +49,12 @@ export default function TodoList() {
                   <strong>DESCRIÇÃO:</strong>
                     <p>{todo.description}
                     </p>
-                    <span>Concluido: </span>
+                    <span>Concluido:</span>
+                     <p>{todo.completed.toString()}
+                        </p>
                      <button onClick={() => handleDeleteTodos(todo._id)} type="button" className="delete">
                      <FiTrash2 size={20} color="#a8a8b3" />
                   </button>
-                  <input type="checkbox" onChange={() => handleCompleted(todo._id)} />
                </li>
             ))}
          </ul>
