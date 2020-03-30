@@ -39,7 +39,8 @@ export default function TodoList() {
         <div className="todo-container">
          <header>
              <button>
-            <Link className="button" to="/todos/new">Cadastrar novo caso</Link>
+            <Link className="button" to="/todos/new"> Cadastrar novo </Link>
+            
             </button>
          </header>
 
@@ -49,7 +50,9 @@ export default function TodoList() {
             {todos.map(todo => (
                <li key={todo._id}>
                   <button type="button" className="edit">
+                     <Link to={`/todos/${todo._id}`}>
                      <FiEdit2 size={20} color="#a8a8b3"  />
+                     </Link>
                      </button>
                   <strong>DESCRIÇÃO:</strong>
                     <p>{todo.description}
